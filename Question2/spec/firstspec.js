@@ -1,32 +1,43 @@
-describe('To test customer', () => {
+describe('To test class customer', () => {
     let cust = null;
     it('should check name is of valid format', () => {
-        const cust = new customer("Royyece", "roy111@gmail.com" , "05-09-2001","1234567890","100");
+        const cust = new customer("Riya", "riyak438@gmail.com" , "10-01-2020","1234567890","500");
         expect(cust.name).toMatch("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");        
         
     });
  
-    it('should check name has min 5 characters', () => {
-        const cust = new customer("Amalanath", "amal456@gmail.com" , "20-12-1995","0023356666","200");
+    it('should check whether name has min 5 characters', () => {
+        const cust = new customer("Soumnya", "sssoumyaa@gmail.com" , "09-12-1995","9447988956","450");
         expect(cust.name.length).toBe(5);
         
     });
-    it('should check mail is proper', () => {
-        const cust = new customer("Krishanan", "ktuiman112@gmail.com" , "09-01-2020","4562023332","3020");
-        let regEx = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-
-        expect(regEx.test(email)).toBe(true);
+    
+    it('should check if email is of valid format', () => {
+        const cust = new customer("Divyamm", "divya@gmail.com" , "03-12-2005","1234567890","600");
+        expect(cust.email).toMatch("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"); 
         
     });
-    it('should check phone number', () => {
-        const cust = new customer("sayanthana", "sayuuus55@gmail.com" , "10-10-2020","9447988956","4520");
-        expect(cust.phone.length).toBe(10);
+ 
+    it('should check if phone number is valid', () => {
+        const cust = new customer("Krishnan", "krishnakumar@gmail.com" , "10-12-2020","8281268966","600");
+        expect(cust.phone).toMatch("^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"); 
         
     });
-    it('should check bill amount', () => {
-        const cust = new customer("Soumnyaa", "ssdfg123@gmail.com" , "18-05-2020","1234567890","600");
-        expect(cust.billAmount).toBe(600);
+ 
+    it('should check bill amount is min 500', () => {
+        const cust = new customer("Sangeetha", "sangeetha05@gmail.com" , "10-12-2020","8865475826","8000");
+       expect(cust.billAmount).toBeGreaterThan(500);
+        
+    });
+ 
+    it('should check if bill date is not more than one month old', () => {
+        const cust = new customer("Lieoiyt", "leoty25y@gmail.com" , "15-10-2020","8281268966","600");
+        let date = cust.billDate;
+        let x = getDate(date);
+        let y = (x-1)*60 * 60 * 1000*24*30;
+        let z = 60 * 60 * 1000*24*30;
+        expect(y).toBeLesserThan(z);        
         
     });
     
-})
+});
